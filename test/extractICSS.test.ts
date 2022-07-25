@@ -1,9 +1,11 @@
-const postcss = require("postcss");
-const { extractICSS } = require("../src");
+import postcss from "postcss";
+import { expect, test } from "vitest";
+import { extractICSS, ExtractMode } from "../src";
 
-const runExtract = (input, mode) =>
+const runExtract = (input: string, mode?: ExtractMode) =>
   extractICSS(postcss.parse(input), true, mode);
-const runCSS = (input, removeRules, mode) => {
+
+const runCSS = (input: string, removeRules?: boolean, mode?: ExtractMode) => {
   const css = postcss.parse(input);
   extractICSS(css, removeRules, mode);
   return css.toString();

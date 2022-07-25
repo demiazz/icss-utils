@@ -1,4 +1,6 @@
-const { replaceValueSymbols } = require("../src");
+import { expect, test } from "vitest";
+
+import { replaceValueSymbols } from "../src";
 
 test("not change empty css", () => {
   expect(replaceValueSymbols("", {})).toEqual("");

@@ -1,7 +1,9 @@
-const postcss = require("postcss");
-const { createICSSRules } = require("../src");
+import postcss from "postcss";
+import { expect, test } from "vitest";
 
-const run = (imports, exports, mode) => {
+import { createICSSRules, Exports, Imports, RulesMode } from "../src";
+
+const run = (imports: Imports, exports: Exports, mode?: RulesMode) => {
   return postcss
     .root()
     .append(createICSSRules(imports, exports, postcss, mode))

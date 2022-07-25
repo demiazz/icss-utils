@@ -1,6 +1,9 @@
-const replaceValueSymbols = require("./replaceValueSymbols.js");
+import { Root } from "postcss";
 
-const replaceSymbols = (css, replacements) => {
+import { replaceValueSymbols } from "./replaceValueSymbols";
+import { Replacements } from "./types";
+
+export const replaceSymbols = (css: Root, replacements: Replacements) => {
   css.walk((node) => {
     if (node.type === "decl" && node.value) {
       node.value = replaceValueSymbols(node.value.toString(), replacements);
@@ -14,5 +17,3 @@ const replaceSymbols = (css, replacements) => {
     }
   });
 };
-
-module.exports = replaceSymbols;

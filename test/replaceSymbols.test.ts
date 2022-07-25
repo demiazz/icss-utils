@@ -1,7 +1,9 @@
-const postcss = require("postcss");
-const { replaceSymbols } = require("../src");
+import postcss from "postcss";
+import { expect, test } from "vitest";
 
-const replace = (input, replacements) => {
+import { Replacements, replaceSymbols } from "../src";
+
+const replace = (input: string, replacements: Replacements) => {
   const ast = postcss.parse(input);
   replaceSymbols(ast, replacements);
   return ast.toString();
